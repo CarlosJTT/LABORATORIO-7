@@ -1,0 +1,61 @@
+//UNIV. TARQUI TICONA CARLOS JAVIER
+//LABORATORIO 7 - PROGRAMACION - EJERCICIO 8
+//HALLAR LA REGRESION LINEAL SIMPLE DE LOS DATOS DE ALTURA
+//Y PESO DE LA SIGUIENTE TABLA. HALLAR LOS COEFICIENTES B0,B1.
+#include <iostream>
+#include <stdio.h>
+#define N 1000
+
+main()
+{
+    system("color 9");
+   int n,i;
+   float m,b,sumax,sumay,sumaxy,sumax2;
+   float x[N],y[N];
+
+printf("\n             UNIV. TARQUI TICONA CARLOS JAVIER         ");
+printf("\n");
+printf("\n HALLAR LA REGRESION LINEAL SIMPLE DE LOS DATOS DE ALTURA");
+printf("\n Y PESO DE LA SIGUIENTE TABLA. HALLAR LOS COEFICIENTES B0,B1.");
+printf("\n_______________________________________________________________");
+  
+   printf("\n INGRESE LA CANTIDAD DE PUNTOS: "); // N=12
+   scanf("%d",&n);
+
+    // mostramos los puntos para pedir el peso y la estatura
+   for (i=0;i<n;i++)
+   {
+        printf("\nPUNTO %d:         \tALTURA: ",i+1);
+              scanf("%f",&y[i]);
+              printf("                       \tPESO : ",i+1);
+              scanf("%f",&x[i]);
+             
+   }
+
+// Hacemos las sumatorias 
+   sumax=sumay=sumaxy=sumax2=0;
+   for (i=0;i<n;i++)
+   {
+    
+   /* suma de los produtos*/
+        sumaxy += x[i]*y[i];
+        /*  suma de los valores de x^2*/
+              sumax2 += x[i]*x[i];
+               /*suma de los valores de x*/
+              sumax += x[i];
+               /*suma de los valores de y*/
+              sumay += y[i];
+  
+   }
+   /* Calculamos la pendiente (m) y la interseccion (b)*/
+
+   m = (n*sumaxy - sumax*sumay) / (n*sumax2 - sumax*sumax);
+   b = (sumay - m*sumax) / n;
+
+   // Mostramos los valores de la pendiente y de la interseccion
+   printf("\n\n PENDIENTE(B1) = %f \nINTERSECCION(B0) = %f\n\n",m,b);
+  
+   // la formula para calcular la variable dependiente(Y) es:
+   printf("\n\n VALOR DE LA VARIABLE DEPENDIENTE ES Yi = (%f) + %f*Xi \n\n",b,m);
+  
+}

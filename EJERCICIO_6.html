@@ -1,0 +1,161 @@
+//UNIV. TARQUI TICONA CARLOS JAVIER
+//LABORATORIO 7 - PROGRAMACION - EJERCICIO 6   
+//Calculo de la media aritmética, la mediana y la moda. Se analizo el IVA que\n");
+//se aplica, en diversos países europeos, a la compra de obras de arte.
+#include <iostream>
+#include<stdio.h>
+#include<math.h>
+
+main()
+{
+	double param, result;
+    system("color 9");
+	int n,i,j,parteentera,numero,INT,TAM,anchoE,ANCHO,PIVO,PTE,LI,NI,LS,paruno,pardos,partres,parcuatro,parcinco,parseis,parsiete,suma,suma1,suma2,suma3,suma4,suma5,suma6;
+	int REC1,REC2,REC3,REC4,REC5,REC6,REC7;
+	float d[150],K,partedecimal,cont=0,aux,mayor=0,menor,ancho,anchoD,RE1,RE2,RE3,RE4,RE5,RE6,RE7;
+	paruno=0;
+	pardos=0;
+	partres=0;
+	parcuatro=0;
+	parcinco=0;
+	parseis=0;
+	parsiete=0;
+	printf("                   UNIV. TARQUI TICONA CARLOS JAVIER\n");
+	printf("Calculo de la media aritmética, la mediana y la moda. Se analizo el IVA que\n");
+	printf("se aplica, en diversos países europeos, a la compra de obras de arte.\n");
+	printf("________________________________________________________________________\n");
+	printf(" NUMERO DE CLASES: "); //N=100
+	scanf("%d",&n);
+
+	for(i=1;i<=n;i++)
+	{
+		
+		printf(" MARCA DE CLASE %d: ",i);
+		scanf("%f",&d[i]);
+		
+		if(4<=d[i] && d[i]<17)  paruno++; //4<x<17
+		else{
+			if(17<=d[i] && d[i]<30)  pardos++; //17<x<30
+			else {
+				if(30<=d[i] && d[i]<43)   partres++;  //30<x<43
+				else{
+					if(43<=d[i] && d[i]<56)   parcuatro++; //43<x<56
+					else{
+						if(56<=d[i] && d[i]<69)     parcinco++;   //56<x<69
+						else{
+							if(69<=d[i] && d[i]<82)      parseis++;  //69<X<82
+							else   parsiete++;
+						}
+					}
+				}
+			}
+		}
+RE1=float(paruno)/float(n);
+RE2=float(pardos)/float(n);
+RE3=float(partres)/float(n);
+RE4=float(parcuatro)/float(n);
+RE5=float(parcinco)/float(n);
+RE6=float(parseis)/float(n);	
+RE7=float(parsiete)/float(n);	
+	suma1=paruno+pardos;
+	suma2=suma1+partres;
+	suma3=suma2+parcuatro;
+	suma4=suma3+parcinco;
+	suma5=suma4+parseis;
+	suma6=suma5+parsiete;
+			
+		if(mayor<d[i])
+		    mayor=d[i];
+		
+		
+	}
+	menor=mayor;
+	for(i=1;i<n;i++)
+	    if(menor>d[i])
+	        menor=d[i];
+	/*do{
+		n=n/2;
+		cont++;
+	}
+	while (0<n);*/
+	
+	
+	//NUMERO DE INTERVALOS
+    param = 100;
+    result = log2 (param);
+    K=1+result;
+    printf("\nA)\n CON LA FORMULA: K = 1 + Log2 (%d)\n ",n);
+    printf ("\tK = %f\n", K );
+    numero=K;
+    parteentera = numero;
+    partedecimal = numero-partedecimal;
+    if(numero%2==0){
+    	INT=numero+1;
+    	printf("\tENTONCES EL NUMERO DE INTEVARLO SERA: %d\n",INT);
+	}
+    else{
+    	printf("\tENTONCES EL NUMERO DE INTEVARLO SERA: %d\n",numero);
+	}
+	//CONSTRUCCION DE LA TABLA DE FRECUENCIAS
+	printf("  EL MENOR TERMINO ES: %f\n",menor);
+	printf("  EL MAYOR TERMINO ES: %f\n",mayor);
+	//NUESTRO PRIMER TERMINO
+	PIVO=menor;
+	PTE=PIVO;
+	printf("  AL SER EL VALOR MINIMO %f  SE PROPONE %d COMO LIMITE INFERIOR DEL PRIMER INTERVALO\n",menor,PTE);
+    //CALCULO DE ANCHO 
+	ancho=(mayor-menor)/float(numero);
+	TAM=ancho;
+	anchoE = TAM;
+	anchoD = TAM-anchoD;
+	if(anchoD==0){
+		printf("\t EL ANCHO DE NUESTRA TABLA DE FRECUENCIA ES: %d\n",TAM);
+		/*for(i=menor;i<numero;i+=TAM){
+			printf("%d\n",i);
+		}*/
+	}
+	else{
+		ANCHO=TAM+1; //ancho de nuestra tabla de frecuencia
+		printf("\t EL ANCHO DE NUESTRA TABLA DE FRECUENCIA ES: %d\n",ANCHO);
+		/*for(i=menor;i<numero;i+=ANCHO){
+			printf("%d\n",i);
+		}*/
+	}
+	
+printf("INGRESE EL ANCHO: ");
+scanf(" %d",&LI);
+printf("NGRESE EL NUMERO DE INTERVALO: ");
+scanf("%d",&NI);
+	
+	LS=(LI*NI)+PTE;
+	printf("  EL TERMINO SUPERIOR DEL ULTIMO INTERVALO ES %d\n",LS);
+	
+	printf("  LA TABLA DE FRECUENCIA SERA LA SIGUIENTE:\n");
+	
+	printf("\n\n   Li-Ls             FRECUENCIA       FRECUENCIA           FRECUENCIA");
+	printf("\n                                      REL. ACUM.           RELATIVA");
+	printf("\n [4;17]\t\t %d\t\t  %d\t\t   %f\n [17;30]\t\t %d\t\t  %d\t\t   %f\n [30;43]\t\t %d\t\t  %d\t\t   %f\n [43;56]\t\t %d\t\t  %d\t\t   %f\n [56;69]\t\t %d\t\t  %d\t\t   %f\n [69;82]\t\t %d\t\t  %d\t\t   %f\n [82;95]\t\t %d\t\t  %d\t\t   %f\n ",paruno,paruno,RE1,pardos,suma1,RE2,partres,suma2,RE3,parcuatro,suma3,RE4,parcinco,suma4,RE5,parseis,suma5,RE6,parsiete,suma6,RE7);
+    printf("SE PUEDE INTERPRETAR DICIENDO QUE EL 27 [%] DE ESTOS NEUMATICOS HAN RECORRIDO ENTRE 43000 Y 56000 Km HASTA QUE SE HA PRODUCIDO UN PINCHAZON O REVENTON\n ");
+    printf("\nB) EN PORCENTAJE DE 100, SERIA LA SIGUIENTE: \n");
+    REC1=RE1*100;
+    REC2=RE2*100;
+    REC3=RE3*100;
+    REC4=RE4*100;
+    REC5=RE5*100;
+    REC6=RE6*100;
+    REC7=RE7*100;
+	printf("\n\n   Li-Ls               FRECUENCIA     ");
+	printf("\n                       REL. ACUM.          ");
+    printf("\n [4;17]\t\t   %d[%]\n [17;30]\t\t   %d[%]\n [30;43]\t\t   %d[%]\n [43;56]\t\t   %d[%]\n [56;69]\t\t   %d[%]\n [69;82]\t\t   %d[%]\n [82;95]\t\t   %d[%]\n",REC1,REC2,REC3,REC4,REC5,REC6,REC7);
+    for(j=1;j<n;j++)
+	    for(i=1;i<n;i++)
+	        if(d[i]<d[i+1])
+	        {
+	        	aux=d[i];
+	        	d[i]=d[i+1];
+	        	d[i+1]=aux;
+			}
+    
+}
+
+	

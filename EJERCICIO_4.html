@@ -1,0 +1,106 @@
+//UNIV. TARQUI TICONA CARLOS JAVIER
+//LABORATORIO 7 - PROGRAMACION - EJERCICIO 4
+//Los datos que se dan a continuacion corresponden a los pesos en Kg. de ochenta personas:
+//a)obtengase una distribucion de datos en intervalos de amplitud 5, siendo el primer intervalo [50;55]
+//b) calculese el porcentaje de personas de peso menor a 65 Kg
+//c) ¿cuantas personas tienen peso mayor o igual que 70 Kg pero menor que 85 Kg?
+// 60 66 77 70 66 68 57 70 66 52 75 65 69 71 58 66 67 74 61 63 69 80 59 66 70 67 78 75 64 71 81 62 64 69 68 72 83 56 65 74 67 54 65 65 69 61 67 73 57 62 67 68 63 67 71 68 76 61 62 63 76 61 67 67 64 72 64 73 79 58 67 71 68 59 69 70 66 62 63 66
+#include <iostream>
+#include<stdio.h>
+#include<math.h>
+
+main()
+{
+    system("color F");
+	float x[100],pes,peso,peso1,peso2,peso3,peso4,peso5;
+	int i,n,paruno,pardos,partres,parcuatro,parcinco,parseis,parsiete,suma,suma1,suma2,suma3,suma4,suma5,suma6,ind1,ind2,ind3,ind4,ind5,ind6;
+	paruno=0;
+	pardos=0;
+	partres=0;
+	parcuatro=0;
+	parcinco=0;
+	parseis=0;
+	parsiete=0;
+	//char T[25];
+	printf("                   UNIV. TARQUI TICONA CARLOS JAVIER\n");
+	printf("Los datos que se dan a continuacion corresponden a los pesos en Kg. de ochenta personas:\n");
+	printf("a)obtengase una distribucion de datos en intervalos de amplitud 5, siendo el primer intervalo [50;55]\n");
+	printf("b) calculese el porcentaje de personas de peso menor a 65 Kg\n");
+	printf("c) ¿cuantas personas tienen peso mayor o igual que 70 Kg pero menor que 85 Kg?\n");
+	printf(" 60 66 77 70 66 68 57 70 66 52 75 65 69 71 58 66 67 74 61\n");
+	printf(" 63 69 80 59 66 70 67 78 75 64 71 81 62 64 69 68 72 83 56\n");
+	printf(" 65 74 67 54 65 65 69 61 67 73 57 62 67 68 63 67 71 68 76\n");
+	printf(" 61 62 63 76 61 67 67 64 72 64 73 79 58 67 71 68 59 69 70\n");
+	printf(" 66 62 63 66\n");
+	printf("________________________________________________________________________\n");
+	printf(" NUMERO DE CLASES: "); //N=80
+	scanf("%d",&n);
+	for(i=1;i<=n;i++)
+	{
+		printf("DATOS %d: ",i);
+		scanf("%f",&x[i]);
+		if(x[i]<55)  paruno++;
+		else{
+			if(x[i]<60)  pardos++;
+			else {
+				if(x[i]<65)   partres++;
+				else{
+					if(x[i]<70)   parcuatro++;
+					else{
+						if(x[i]<75)     parcinco++;
+						else{
+							if(x[i]<80)      parseis++;
+							else   parsiete++;
+						}
+					}
+				}
+			}
+		}
+	}
+	suma1=paruno+pardos;
+	suma2=suma1+partres;
+	suma3=suma2+parcuatro;
+	suma4=suma3+parcinco;
+	suma5=suma4+parseis;
+	suma6=suma5+parsiete;
+	printf("\n\nA)");
+	printf("\n\n   Li-Ls             FRECUENCIA       FRECUENCIA");
+	printf("\n                                      REL. ACUM.");
+	printf("\n [50;55]\t\t %d\t\t  %d\n [55;60]\t\t %d\t\t  %d\n [60;65]\t\t %d\t\t  %d\n [65;70]\t\t %d\t\t  %d\n [70;75]\t\t %d\t\t  %d\n [75;80]\t\t %d\t\t  %d\n [80;85]\t\t %d\t\t  %d\n ",paruno,paruno,pardos,suma1,partres,suma2,parcuatro,suma3,parcinco,suma4,parseis,suma5,parsiete,suma6);
+    suma=paruno+pardos+partres+parcuatro+parcinco+parseis+parsiete;
+    printf("\n\t\t\tN = %d\n ",suma);
+    pes=float(paruno)/float(n)*100;
+    peso=float(suma1)/float(n)*100;
+    peso1=float(suma2)/float(n)*100;
+    peso2=float(suma3)/float(n)*100;
+    peso3=float(suma4)/float(n)*100;
+    peso4=float(suma5)/float(n)*100;
+    peso5=float(suma6)/float(n)*100;
+    printf("\nB)\n\n");
+    printf("EL PORCENTAJE CORRESPONDIENTE ES (PESO MENOR QUE 55kg): %f PORCIENTO\n",pes);
+    printf("EL PORCENTAJE CORRESPONDIENTE ES (PESO MENOR QUE 60kg): %f PORCIENTO\n",peso);
+    printf("EL PORCENTAJE CORRESPONDIENTE ES (PESO MENOR QUE 65kg): %f PORCIENTO\n",peso1);
+    printf("EL PORCENTAJE CORRESPONDIENTE ES (PESO MENOR QUE 70kg): %f PORCIENTO\n",peso2);
+    printf("EL PORCENTAJE CORRESPONDIENTE ES (PESO MENOR QUE 75kg): %f PORCIENTO\n",peso3);
+    printf("EL PORCENTAJE CORRESPONDIENTE ES (PESO MENOR QUE 80kg): %f PORCIENTO\n",peso4);
+    printf("EL PORCENTAJE CORRESPONDIENTE ES (PESO MENOR QUE 85kg): %f PORCIENTO\n",peso5);
+    printf("\nC)\n\n");
+    ind1=paruno+pardos+partres;
+    ind2=pardos+partres+parcuatro;
+    ind3=partres+parcuatro+parcinco;
+    ind4=parcuatro+parcinco+parseis;
+    ind5=parcinco+parseis+parsiete;
+    ind6=parseis+parsiete;
+    printf("EL NUMERO DE INDIVIDUOS CON PESO COMPRENDIDO ENTRE 50 y 65 Kg,es: %d\n",ind1);
+    printf("EL NUMERO DE INDIVIDUOS CON PESO COMPRENDIDO ENTRE 55 y 70 Kg,es: %d\n",ind2);
+    printf("EL NUMERO DE INDIVIDUOS CON PESO COMPRENDIDO ENTRE 60 y 75 Kg,es: %d\n",ind3);
+    printf("EL NUMERO DE INDIVIDUOS CON PESO COMPRENDIDO ENTRE 65 y 80 Kg,es: %d\n",ind4);
+    printf("EL NUMERO DE INDIVIDUOS CON PESO COMPRENDIDO ENTRE 70 y 85 Kg,es: %d\n",ind5);
+    printf("EL NUMERO DE INDIVIDUOS CON PESO COMPRENDIDO ENTRE 75 y 85 Kg,es: %d\n",ind6);
+    
+}
+	
+
+
+	
+	
