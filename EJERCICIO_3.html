@@ -1,0 +1,85 @@
+//UNIV. TARQUI TICONA CARLOS JAVIER
+//LABORATORIO 7 - PROGRAMACION - EJERCICIO 3
+
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+
+
+int main (){
+    float lista[1000];
+    int cantidad;
+    float mayor, menor;
+    float acumulador=0;
+    float promedio=0;
+    float varianza=0;
+    float desviacion_estandar;
+    float c_variacion;
+    int percentil;
+    int resultado_percentil;
+    cout<<"               UNIV. TARQUI TICONA CARLOS JAVIER     "<<endl;
+    cout<<"_______________________________________________________________"<<endl;
+    cout<<"  NUMERO DE CLASES: ";
+    cin>>cantidad;
+    if (cantidad<1000 && cantidad >0 ){
+            for(int i=0; i<cantidad; i++){
+            cout<<"DATO "<<i+1<<": ";
+            cin>>lista[i];
+            acumulador += lista[i];
+            }
+            cout<<endl;
+            for(int i=0; i<cantidad; i++){
+            cout<<lista[i]<<endl;
+            }
+            for(int i=0; i<cantidad; i++){
+
+                if(i==0){
+                    mayor=lista[i];
+                    menor=lista[i];
+                }
+                else{
+                    if(lista[i]>mayor){
+                        mayor=lista[i];
+                    }
+                    if(lista[i]<menor){
+                        menor=lista[i];
+                    }
+                }
+            }
+            cout<<endl;
+            cout<<"\tEL MAYOR ELEMENTO ES: "<<mayor<<endl;
+            cout<<"\tEL MENOR ELEMENTO ES: "<<menor;
+            cout<<"=========================================="<<endl;
+
+            cout<<endl;
+            promedio= acumulador/cantidad;
+            cout<<"\tLA MEDIA ES: "<<promedio<<endl;
+
+            for(int i=0; i<cantidad; i++){
+                    varianza=varianza+(pow((lista[i]-promedio),2))/cantidad;
+            }
+            cout<<endl;
+            cout<<"\tLA VARIANZA ES: "<<varianza<<endl;
+
+            desviacion_estandar= sqrt(varianza);
+            cout<<"\tLA DESVIACION ESTANDAR ES: "<<desviacion_estandar<<endl;
+
+            cout<<endl;
+            c_variacion=desviacion_estandar/promedio;
+            cout<<"\tEL COEFICIENTE DE VARIACION DE PEARSON ES: "<<c_variacion<<endl;
+
+            cout<<endl;
+            cout<<"\t ¿QUE PERCENTIL DESEA HALLAR? ";
+            cin>>percentil;
+            int entero=(percentil*cantidad)/100;
+            cout<<entero<<endl;
+            resultado_percentil=lista[entero];
+            cout<<"\tEL PERCENTIL QUE BUSCA ES: "<<resultado_percentil<<endl;
+
+    }
+
+
+
+    return 0;
+}

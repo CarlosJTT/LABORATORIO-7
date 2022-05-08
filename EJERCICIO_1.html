@@ -1,0 +1,68 @@
+//UNIV. TARQUI TICONA CARLOS JAVIER
+//LABORATORIO 7 - PROGRAMACION - EJERCICIO 1
+
+#include <iostream>
+#include <conio.h>
+#include <math.h>
+using namespace std;
+
+
+int main (){
+    int lista[100];
+    int cantidad;
+    int mayor, menor;
+    float acumulador=0;
+    float promedio=0;
+    float varianza=0;
+    float desviacion_estandar;
+    system("color 2");
+    cout<<"               UNIV. TARQUI TICONA CARLOS JAVIER     "<<endl;
+    cout<<"_______________________________________________________________"<<endl;
+    cout<<"NUMERO DE CLASES: "; //N=60
+    cin>>cantidad;
+    if (cantidad<100 && cantidad >0 ){
+            for(int i=0; i<cantidad; i++){
+            cout<<"\tDATOS:  "<<i+1<<": ";
+            cin>>lista[i];
+            acumulador += lista[i];
+            }
+            cout<<endl;
+            for(int i=0; i<cantidad; i++){
+            cout<<lista[i]<<endl;
+            }
+            for(int i=0; i<cantidad; i++){
+
+                if(i==0){
+                    mayor=lista[i];
+                    menor=lista[i];
+                }
+                else{
+                    if(lista[i]>mayor){
+                        mayor=lista[i];
+                    }
+                    if(lista[i]<menor){
+                        menor=lista[i];
+                    }
+                }
+            }
+            cout<<endl;
+            cout<<"EL MAYOR ELEMENTO ES: "<<mayor<<endl;
+            cout<<"EL MAYOR ELEMENTO ES: "<<menor;
+
+            cout<<endl;
+            promedio= acumulador/cantidad;
+            cout<<"EL MEDIA ES: "<<promedio<<endl;
+
+            for(int i=0; i<cantidad; i++){
+                    varianza=varianza+(pow((lista[i]-promedio),2))/cantidad;
+            }
+            cout<<endl;
+            cout<<"LA VIRIANZA ES: "<<varianza<<endl;
+
+            desviacion_estandar= sqrt(varianza);
+            cout<<"LA DESVIACION ESTNADAR ES: "<<desviacion_estandar<<endl;
+
+    }
+
+    return 0;
+}
